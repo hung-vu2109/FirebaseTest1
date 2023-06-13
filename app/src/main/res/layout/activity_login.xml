@@ -48,12 +48,22 @@
         android:id="@+id/btn_login"
         android:text="Login"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"/>
     <TextView
         android:id="@+id/tv_toRegister"
         android:text="Don't have account. SignUp now"
         android:textSize="23sp"
         android:textStyle="italic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="9dp"/>
+    <TextView
+        android:id="@+id/tv_signInWithGoogle"
+        android:text="Sign In with Google "
+        android:textSize="23sp"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="9dp"/>
 </LinearLayout>

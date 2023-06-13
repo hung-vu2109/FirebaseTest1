@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,8 +27,9 @@ public class Login extends AppCompatActivity {
     TextInputEditText email_edt, pass_edt;
     Button loginBtn;
     ProgressBar login_progressBar;
-    TextView toRegister_textView;
+    TextView toRegister_textView, signInWithGoogle;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +40,23 @@ public class Login extends AppCompatActivity {
         email_edt =findViewById(R.id.email);
         pass_edt = findViewById(R.id.password);
 
+
+
         loginBtn = findViewById(R.id.btn_login);
 
         login_progressBar = findViewById(R.id.progressBar);
 
         toRegister_textView = findViewById(R.id.tv_toRegister);
+        signInWithGoogle = findViewById(R.id.tv_signInWithGoogle);
 
+        signInWithGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, GoogleSignInActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         toRegister_textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +73,8 @@ public class Login extends AppCompatActivity {
                 login_progressBar.setVisibility(View.VISIBLE);
 
                 String email, password;
+
+                // use valueOf to catch "null"
                 email = String.valueOf(email_edt.getText());
                 password = String.valueOf(pass_edt.getText());
 //                email = Objects.requireNonNull(editTextEmail.getText()).toString();

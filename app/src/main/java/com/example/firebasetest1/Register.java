@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -40,6 +41,12 @@ public class Register extends AppCompatActivity {
 
         editTextEmail = findViewById(R.id.inputText_reg_email);
         editTextPassword = findViewById(R.id.inputText_reg_password);
+
+        // autofill services turn on in settings
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            editTextEmail.setAutofillHints(View.AUTOFILL_HINT_EMAIL_ADDRESS);
+            editTextPassword.setAutofillHints(View.AUTOFILL_HINT_PASSWORD);
+        }
 
         registerBtn = findViewById(R.id.btn_register);
 
