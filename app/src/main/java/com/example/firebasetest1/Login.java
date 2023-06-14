@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
     TextInputEditText email_edt, pass_edt;
     Button loginBtn;
     ProgressBar login_progressBar;
-    TextView toRegister_textView, signInWithGoogle;
+    TextView toRegister_textView, signInWithGoogle, oneTapSignIn;
     private FirebaseAuth mAuth;
 
     @Override
@@ -48,6 +48,16 @@ public class Login extends AppCompatActivity {
 
         toRegister_textView = findViewById(R.id.tv_toRegister);
         signInWithGoogle = findViewById(R.id.tv_signInWithGoogle);
+        oneTapSignIn = findViewById(R.id.tv_oneTap_signIn);
+
+        oneTapSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, OneTapSignIn.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         signInWithGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
